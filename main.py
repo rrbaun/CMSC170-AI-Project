@@ -32,7 +32,6 @@ if os.path.exists(file_path):
         print(f"Median mortality threshold: {threshold}")
         print("\nClass distribution:")
         for label in ["High", "Low"]:
-            import numpy as np
             count = int((y == label).sum())
             print(f"{label} Mortality Impact: {count}")
         run_knn(X, y, feature_columns, metadata)
