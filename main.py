@@ -35,6 +35,9 @@ if os.path.exists(file_path):
             print(f"{label} Mortality Impact: {count}")
         run_knn(X, y, feature_columns, metadata)
 
+    elif choice == "3":
+        
+
     else:
         print("Invalid choice.")
 
