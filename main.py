@@ -16,7 +16,8 @@ if os.path.exists(file_path):
     print("\nSelect an algorithm to run:")
     print("[1] K-Means Clustering")
     print("[2] K-Nearest Neighbor")
-    choice = input("Enter choice (1 or 2): ").strip()
+    print("[3] Perceptron")
+    choice = input("Enter choice (1, 2, 3): ").strip()
 
     if choice == "1":
         X, regions, causes, feature_columns = prep_features(cleaned_rows)
@@ -39,7 +40,7 @@ if os.path.exists(file_path):
     elif choice == "3":
         X, y, metadata, feature_columns, threshold = prepare_supervised_dataset(cleaned_rows)
         print(f"\nMedian mortality threshold: {threshold}")
-        run_perceptron(X, y, feature_columns, metadata)
+        run_perceptron(X, y, feature_columns)
 
     else:
         print("Invalid choice.")
