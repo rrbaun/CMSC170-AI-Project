@@ -3,6 +3,7 @@ from preprocessing.data_loader import load_data
 from preprocessing.data_preprocessing import clean_data, prep_features
 from algorithms.k_means import run_kmeans
 from algorithms.k_nearest_neighbor import run_knn, prepare_supervised_dataset
+from algorithms.perceptron import run_perceptron
 
 file_path = "data/CMSC170-Data.csv"
 
@@ -36,7 +37,9 @@ if os.path.exists(file_path):
         run_knn(X, y, feature_columns, metadata)
 
     elif choice == "3":
-        
+        X, y, metadata, feature_columns, threshold = prepare_supervised_dataset(cleaned_rows)
+        print(f"\nMedian mortality threshold: {threshold}")
+        run_perceptron(X, y, feature_columns, metadata)
 
     else:
         print("Invalid choice.")
