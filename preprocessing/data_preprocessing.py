@@ -60,3 +60,27 @@ def prep_features(cleaned_rows):
     causes = [row["Cause of Death"] for row in cleaned_rows]
 
     return X, regions, causes, feature_columns
+
+def stratified_split(X, y, test_size=0.20, random_state=None):
+    if random_state is not None:
+        np.random.seed(random_state)
+
+    classes, counts = np.unique(y, return_counts=True)
+    train_indices = []
+    test_indices  = []
+
+    for cls in classes:
+        cls_indices = np.where(y == cls)[0]
+        np.random.shuffle(cls_indices)
+
+        n_test = max(1, int(len(cls_indices) * test_size))
+        test_indices.extend(cls_indices[:n_test].tolist())
+        train_indices.extend(cls_indices[n_test:].tolist())
+
+    train_indices = np.array(train_indices)
+    test_indices  = np.array(test_indices)
+
+    np.random.shuffle(train_indices)
+    np.random.shuffle(test_indices)
+
+    return X[train_indices], X[test_indices], y[train_indices], y[test_indices]
