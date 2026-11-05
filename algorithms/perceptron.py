@@ -37,8 +37,7 @@ class Perceptron:
             errors = self._count_errors(training_data, weight, bias)
             self.errors.append(errors)
 
-            # possibly unneeded, no reason to save the epoch with the best stats / least errors
-            # (was originally going to print out best epoch at the end + compare with final epoch if not converged)
+            # keeps best epoch for final results
             if errors < best_errors:
                 best_weight = weight[:]
                 best_bias = bias
@@ -221,10 +220,6 @@ def run_perceptron(X, y, feature_columns):
     full = Perceptron(learning_rate=learning_rate, max_epochs=max_epochs)
     weight, bias, epochs = full.fit(X_all, y_ratio)
 
-    # remove for readability (?)
-    # for epoch in range(len(full.errors)):
-    #     print(f"Epoch {epoch + 1}: {full.errors[epoch]} misclassified")
-
     if full.converged:
         print(f"\n[Perceptron] Converged successfully at epoch {epochs}!")
         print("Data is linearly separable")
@@ -264,22 +259,9 @@ def run_perceptron(X, y, feature_columns):
     print(f"Testing Accuracy: {accuracy:.4f}")
     print(f"Macro F1-Score: {score:.4f}")
 
-    # precision and recall, can possibly be removed and just keep confusion matrix
-    print("\nPrecision and Recall")
-    print("            Precision  Recall")
-    for label in ["High", "Low"]:
-        precision = perceptron.precision_score(y_test, y_pred, label)
-        recall = perceptron.recall_score(y_test, y_pred, label)
-        print(f"{label:<11} {precision:<10.4f} {recall:.4f}")
-
     perceptron.display_confusion_matrix(matrix)
-    print(f"False positives (Low-risk predicted as High): {matrix[1][0]}")
+    print(f"\nFalse positives (Low-risk predicted as High): {matrix[1][0]}")
     print(f"False negatives (High-risk predicted as Low): {matrix[0][1]}")
-
-    # mostly irrelevant to the project objective (?), can be removed
-    # print("\nTop 5 features by weight size (+ pushes toward High, - toward Low):")
-    # for j in np.argsort(-np.abs(perceptron.weight))[:5]:
-    #     print(f"  {names[j]:<24s} {perceptron.weight[j]:+.4f}")
 
 
 
