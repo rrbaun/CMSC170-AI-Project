@@ -440,6 +440,17 @@
           </tr>
         </tbody>
       </table>
+      <figure>
+        <img
+          src="../evaluation/figures/kmeans_silhouette_vs_k.png"
+          alt="Graph of K versus Silhouette Score for K-Means Clustering"
+        />
+        <figcaption>
+          <strong>Figure 1:</strong> K-Means Silhouette Score across candidate
+          cluster counts (<em>k</em>), showing optimal separation at
+          <em>k</em> = 6.
+        </figcaption>
+      </figure>
 
       <h3>
         B. Supervised Classification: KNN Hyperparameter Sweep (<em
@@ -482,6 +493,16 @@
           </tr>
         </tbody>
       </table>
+      <figure>
+        <img
+          src="../evaluation/figures/knn_macro_f1_Score.png"
+          alt="Graph of K versus Macro F1-Score for KNN Classification"
+        />
+        <figcaption>
+          <strong>Figure 2:</strong> KNN Macro F1-Score across <em>k</em> ∈ {3,
+          5, 7, 9}, peaking at <em>k</em> = 5 (0.9836).
+        </figcaption>
+      </figure>
 
       <h3>C. Cross-Method Comparison & Diagnostic Figures</h3>
       <table>
@@ -527,30 +548,6 @@
           </tr>
         </tbody>
       </table>
-
-      <div class="todo">
-        <strong>[TODO — Milestone 2 Feedback & Milestone 3 Figures]:</strong>
-        Replace these placeholders with relative links to your saved figures in
-        <code>../results/</code> once generated:
-        <ul>
-          <li>
-            <code>../results/kmeans_silhouette_vs_k.png</code> — Graph of $K$
-            (x-axis) vs. Silhouette Score (y-axis) justifying $k = 6$.
-          </li>
-          <li>
-            <code>../results/knn_f1_vs_k.png</code> — Graph of $K \in \{3, 5, 7,
-            9\}$ (x-axis) vs. Macro F1-Score (y-axis) justifying $k = 5$.
-          </li>
-          <li>
-            <code>../results/confusion_matrices.png</code> — Side-by-side
-            Confusion Matrices for KNN ($k=5$) and Perceptron.
-          </li>
-          <li>
-            Full Precision, Recall, Accuracy, and Macro F1 table for KNN vs.
-            Perceptron on the unified test split.
-          </li>
-        </ul>
-      </div>
     </section>
 
     <!-- 7. DISCUSSION -->
@@ -671,8 +668,11 @@
         </li>
         <li>
           <strong>Presentation Slides:</strong>
-          <a href="#" target="_blank" rel="noopener noreferrer"
-            >[TODO: Add Presentation Slides URL]</a
+          <a
+            href="https://canva.link/o04ckg5bg0cajeb"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Presentation Slides</a
           >
         </li>
       </ul>
