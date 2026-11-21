@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CMSC 170 Project</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <a href="#home" class="logo">CMSC 170<span>-</span>Introduction to AI </a>
+
+        <nav class="nav-links">
+            <a href="#overview">Overview</a>
+            <a href="#dataset">Dataset</a>
+            <a href="#algorithms">Algorithms</a>
+            <a href="#methodology">Methodology</a>
+            <a href="#results">Results</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+            <h1>
+                Regional Mortality Pattern Discovery and <br>
+                Risk Tier Classification in the Philippines (2024). <br>
+            </h1>
+
+            <p class="hero-description">
+                An exploration of three AI algorithms:
+                K-Means, K-Nearest Neighbors, and Perceptron,
+                using Philippine mortality data.
+            </p>
+
+            <a href="#overview" class="primary-button">
+                Explore the Project ↓
+            </a>
+        </div>
+
+        <div class="hero-side">
+            <h2> Neural Three</h2>
+            <h3>Antonette Mae P. Perez</h3>
+            <h3>Jazmin Joy Iloso</h3>
+            <h3>Ryla Sofia Ysabel Baun</h3>
+        </div>
+
+    </section>
+
+
+    <!-- OVERVIEW SECTION -->
+    <section class="section overview" id="overview">
+
+        <div class="section-label">
+            <span>PROJECT STATEMENT & MOTIVATION</span>
+        </div>
+
+        <div class="section-content">
+            <h2>
+                Exploring patterns<br>
+                within <span>data.</span>
+            </h2>
+
+            <p>
+                Public health planning relies on understanding how mortality burdens vary across geographic regions, 
+                age brackets, and biological sex. Raw national vital statistics tables break deaths down across dozens 
+                of demographic cross-tabulations per cause of death, making it difficult to manually identify shared regional disease
+                profiles or systematically flag high-impact demographic-cause segments.
+            </p>
+        </div>
+
+        <div class="section-content">
+            <h3>
+                Objective
+            </h3>
+            <p>
+               To evaluate unsupervised clustering (K-Means) and supervised classification 
+               (KNN and Perceptron) on the 2024 Philippine regional mortality dataset—analyzing
+                regional mortality distribution patterns and testing public health risk tier 
+                classification (High vs. Low Mortality Impact) across age group, sex, and
+                cause of death—to determine which method(s) yield a helpful, well-supported 
+                conclusion about the data.
+            </p>
+        </div>
+
+        <div class="overview-stats">
+            <div class="stat">
+                <h3>03</h3>
+                <p>AI Algorithms</p>
+            </div>
+
+            <div class="stat">
+                <h3>08</h3>
+                <p>Regions Covered</p>
+            </div>
+
+            <div class="stat">
+                <h3>2024</h3>
+                <p>Mortality Data</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- DATASET SECTION -->
+    <section class="section dataset" id="dataset">
+
+        <div class="section-label">
+            <span>DATASET DESCRIPTION</span>
+        </div>
+
+        <div class="section-content">
+            <h2>
+                Dataset: Number of Registered Deaths by Age Group, Sex, 
+                Region of Usual Residence and Cause of Death, Philippines: 2024
+            </h2>
+            <ul>
+                <li>Source: Philippine Statistics Authority (PSA) OpenSTAT — 
+                    Population and Vital Statistics
+                </li>
+
+                <li>Geographic Coverage: Eight selected Philippine regions 
+                    (NCR, CAR, Region I, Region II, Region III, Region IV-A, Region IV-B, and Region V)
+                </li>
+
+                <li>Raw Dimensions: 928 rows x 65 columns</li>
+
+                <li>Cleaned Dimensions: 920 rows (737 training / 183 testing in the 80:20 split) x
+                    [TODO: exact cleaned column count] columns
+                </li>
+
+                <li>Features & Target: Each observation represents a specific region and single cause of death, 
+                    with numerical features consisting of male and female mortality counts broken down across 
+                    individual age brackets (e.g., Under 1, 1-4, 5-9, …, 85 and over). 
+                    For supervised tasks, observations are labeled as High Mortality Impact or Low Mortality Impact.
+                </li>
+
+            </ul>
+        </div>    
+    </section>
+
+
+    <!-- ALGORITHMS SECTION -->
+    <section class="section algorithms" id="algorithms">
+
+        <div class="section-label">
+            <span>THE ALGORITHMS</span>
+            <span>THREE APPROACHES</span>
+        </div>
+
+        <h2 class="large-heading">
+            Compare approaches.<br>
+            <span>Master the tradeoffs.</span>
+        </h2>
+
+        <div class="algorithm-grid">
+
+            <article class="algorithm-card">
+                <span class="card-number">01</span>
+                <h3>K-Means</h3>
+                <p>
+                    An unsupervised learning algorithm that groups
+                    data points based on similarities.
+                </p>
+                <a href="#kmeans" class="card-button">
+                    Explore Algorithm <span>↗</span>
+                </a>
+            </article>
+
+            <article class="algorithm-card">
+                <span class="card-number">02</span>
+                <h3>K Nearest Neighbor</h3>
+                <p>
+                    A supervised learning algorithm that classifies
+                    observations using their nearest neighbors.
+                </p>
+                <a href="#knn" class="card-button">
+                    Explore Algorithm <span>↗</span>
+                </a>
+            </article>
+
+            <article class="algorithm-card">
+                <span class="card-number">03</span>
+                <h3>Perceptron</h3>
+                <p>
+                    A linear classification algorithm that learns
+                    from labeled training examples.
+                </p>
+                <a href="#perceptron" class="card-button">
+                    Explore Algorithm <span>↗</span>
+                </a>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- INDIVIDUAL ALGORITHM SECTIONS -->
+    <section class="section algorithm-details" id="kmeans">
+        <div class="section-label">ALGORITHM 01</div>
+        <h2>K-Means</h2>
+        <span>
+            How it works:
+        </span>
+        <p>K-Means partitions unlabeled observations into k disjoint clusters by 
+            iteratively assigning each data point to its nearest centroid (via Euclidean distance) 
+            and recomputing each centroid as the mean of its assigned points until cluster assignments 
+            converge.</p>
+        <br>
+        <span>
+            Implementation & Role:
+        </span>
+        <p>Implemented from scratch with iterative centroid updates (converging at iteration 19 for k = 6)
+            to uncover natural geographic and life-stage mortality groupings
+            across regions and causes of death.</p>
+    </section>
+
+    <section class="section algorithm-details alternate" id="knn">
+        <div class="section-label">ALGORITHM 02</div>
+        <h2>K-Nearest Neighbors</h2>
+        <span>
+            How it works:
+        </span>
+        <p>KNN is a non-parametric, instance-based classifier that computes distances between a query observation
+            and all training observations, predicting the majority class label among 
+            its k closest neighbors in feature space.</p>
+        <br>
+        <span>
+            Implementation & Role:
+        </span>
+        <p>Implemented from scratch with Euclidean distance calculation and majority voting across k in {3, 5, 7, 9} 
+            to capture localized, non-linear boundaries between High and Low mortality segments.</p>
+    </section>
+
+    <section class="section algorithm-details" id="perceptron">
+        <div class="section-label">ALGORITHM 03</div>
+        <h2>Perceptron</h2>
+        <span>
+            How it works:
+        </span>
+        <p>The Perceptron learns a linear decision boundary by iteratively updating weights and bias whenever
+            a training instance is misclassified, converging to zero errors only if the classes are linearly separable.</p>
+        <br>
+        <span>
+            Implementation & Role:
+        </span>
+        <p> Implemented from scratch as a linear baseline to test whether demographic age-and-sex feature 
+            combinations allow a single hyperplane to separate High and Low mortality risk tiers.</p>
+    </section>
+
+
+    <!-- METHODOLOGY -->
+    <section class="section alternate" id="methodology">
+        <div class="section-label">EXPERIMENTAL SETUP</div>
+        <h3>Data Split:</h3> 
+            <p>
+               For supervised models (KNN and Perceptron), the 920 cleaned records were partitioned using an 80:20 stratified train-test split
+                (737 training observations, 183 testing observations) to preserve class proportions across High and Low Mortality Impact categories. 
+                Because K-Means is unsupervised, it was evaluated directly on the unlabeled feature matrix without a train-test split.
+            </p>
+        <ul>
+            <li>
+                <h3>Hyperparameters Tested: </h3>
+                <br>
+                <li>
+                    K-Means: Evaluated across candidate cluster counts k (with k = 6 highlighted in Milestone 2; max iterations until convergence at iteration 19).
+                </li>
+
+                <li>
+                    KNN: Tested k in {3, 5, 7, 9} using Euclidean distance.
+                </li>
+
+                <li>
+                    Perceptron: Learning rate eta = 0.1, trained for up to 100 epochs.
+                </li>
+                <br>
+
+                <h3>Evaluation Metrics (Implemented From Scratch): </h3>
+                <li>
+                    Silhouette Score (K-Means): Measures intra-cluster cohesion versus nearest-cluster separation ([-1, 1])
+                    without requiring ground-truth labels.
+                </li>
+
+                <li>
+                    Accuracy, Precision, Recall & Macro F1-Score (KNN & Perceptron): Macro F1 weights High and Low mortality classes
+                    equally so majority-class accuracy does not mask minority-class errors.
+                </li>
+
+                <li>
+                    Confusion Matrix (KNN & Perceptron): Breaks down True Positives, True Negatives, False Positives, 
+                    and False Negatives across risk categories.
+                </li>
+            </li>
+        </ul>
+    </section>
+
+
+    <!-- RESULTS & DISCUSSION -->
+    <section class="section" id="results">
+        <div class="section-label">RESULTS & DISCUSSION</div>
+        <h3>Measuring performance.</h3>
+        <p>place tables and graphs here</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <h3>Resources</h3>
+            <p>place link here</p>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 CMSC 170 PROJECT</span>
+            <a href="#home">Back to top ↑</a>
+        </div>
+    </footer>
+
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
