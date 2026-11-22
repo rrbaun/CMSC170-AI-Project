@@ -1,65 +1,73 @@
+document.documentElement.classList.add('js-enabled');
+const revealItems = document.querySelectorAll('.reveal');
 
-// scroll reveal
-document.body.classList.add("js-enabled");
+if ('IntersectionObserver' in window) {
 
-const revealElements = document.querySelectorAll(
-    ".section, .algorithm-card"
-);
-
-revealElements.forEach((element) => {
-    element.classList.add("reveal");
-});
-
-const observer = new IntersectionObserver(
+  const revealObserver = new IntersectionObserver(
     (entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
-            }
-        });
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          observer.unobserve(entry.target);
+        }
+
+      });
+
     },
     {
-        threshold: 0.12
+      threshold: 0.12
     }
-);
+  );
 
-revealElements.forEach((element) => {
-    observer.observe(element);
-});
+  revealItems.forEach(item => {
+    revealObserver.observe(item);
+  });
+
+} else {
+
+  revealItems.forEach(item => {
+    item.classList.add('visible');
+  });
+
+}
 
 
-// active navigation
-const sections = document.querySelectorAll(
-    "#overview, #algorithms, #methodology, #results"
-);
+const sections = document.querySelectorAll('main section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
 
-const navLinks = document.querySelectorAll(".nav-links a");
+if ('IntersectionObserver' in window) {
 
-const navObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
+  const sectionObserver = new IntersectionObserver(
+    entries => {
 
-                navLinks.forEach((link) => {
-                    link.classList.remove("active");
-                });
+      entries.forEach(entry => {
 
-                const activeLink = document.querySelector(
-                    `.nav-links a[href="#${entry.target.id}"]`
-                );
+        if (entry.isIntersecting) {
 
-                if (activeLink) {
-                    activeLink.classList.add("active");
-                }
-            }
-        });
+          navLinks.forEach(link => {
+
+            link.classList.toggle(
+              'active',
+              link.getAttribute('href') === `#${entry.target.id}`
+            );
+
+          });
+
+        }
+
+      });
+
     },
     {
-        threshold: 0.4
+      rootMargin: '-35% 0px -55% 0px'
     }
-);
+  );
 
-sections.forEach((section) => {
-    navObserver.observe(section);
-});
+  sections.forEach(section => {
+    sectionObserver.observe(section);
+  });
+
+}
