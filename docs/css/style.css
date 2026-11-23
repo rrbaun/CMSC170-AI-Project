@@ -599,10 +599,10 @@ a {
 }
 
 .pipeline-heading {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: end;
-  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 
   margin-bottom: 25px;
 }
@@ -1141,12 +1141,14 @@ a {
   height: auto;
   border-radius: 14px;
   display: block;
+  margin-bottom: 18px;
 }
 
 .graph-card figcaption {
-  color: var(--muted);
-  font-size: 12.5px;
-  line-height: 1.6;
+  flex: 1;
+  padding-top: 15px;
+  font-size: 12px;
+  line-height: 1.7;
 }
 
 .graph-card figcaption b {
