@@ -7,11 +7,27 @@ from algorithms.perceptron import run_perceptron
 
 file_path = "data/CMSC170-Data.csv"
 
+def get_shape(data):
+    if not data:
+        return 0, 0
+    first = data[0]
+    if hasattr(first, "shape"):  # e.g., NumPy array
+        return data.shape[0], data.shape[1]
+    if isinstance(first, dict):
+        return len(data), len(first.keys())
+    return len(data), len(first)
+
 if os.path.exists(file_path):
     print("CSV file found!")
     rows = load_data(file_path)
 
     cleaned_rows = clean_data(rows)
+
+    orig_r, orig_c = get_shape(rows)
+    clean_r, clean_c = get_shape(cleaned_rows)
+
+    print(f"Original dataset dimensions: {orig_r} rows x {orig_c} columns")
+    print(f"Cleaned dataset dimensions:  {clean_r} rows x {clean_c} columns")
 
     print("\nSelect an algorithm to run:")
     print("[1] K-Means Clustering")
