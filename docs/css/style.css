@@ -72,6 +72,13 @@ a {
   color: var(--accent);
 }
 
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+}
+
 .logo small {
   color: var(--muted);
   font: 500 11px var(--body-font);
