@@ -6,13 +6,36 @@ import numpy as np
 os.makedirs("figures", exist_ok=True)
 
 # 2. K-Means Silhouette vs K plot data
-k_vals = [2, 3, 4, 5, 6, 7, 8, 9, 10]
-sil_scores = [0.9495, 0.8626, 0.7979, 0.7076, 0.7192, 0.6804, 0.6840, 0.5564, 0.6916]
+k_vals = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+sil_scores = [0.9495, 
+              0.8626, 
+              0.7979, 
+              0.7076, 
+              0.7192, 
+              0.6804, 
+              0.6840, 
+              0.5564, 
+              0.6916,
+              0.6939,
+              0.6992,
+              0.5448,
+              0.5446,
+              0.5554,
+              0.4982,
+              0.5104,
+              0.5194,
+              0.5227,
+              0.4982,
+              0.4834,
+              0.4834,
+              0.4733,
+              0.495,
+              0.4732]
 
 plt.figure(figsize=(8, 4.5))
 plt.plot(k_vals, sil_scores, marker='o', linewidth=2.2, color='#1b4f72', label='Silhouette Score')
-plt.axvline(x=6, color='#c0392b', linestyle='--', linewidth=1.5, label='Selected K = 6 (Score = 0.7192)')
-plt.scatter([6], [0.7192], color='#c0392b', zorder=5, s=70)
+plt.axvline(x=12, color='#c0392b', linestyle='--', linewidth=1.5, label='Selected K = 12 (Score = 0.6939)')
+plt.scatter([12], [0.6939], color='#c0392b', zorder=11, s=70)
 
 # 3. Add silhouette score text labels on top of every data point
 for k, s in zip(k_vals, sil_scores):

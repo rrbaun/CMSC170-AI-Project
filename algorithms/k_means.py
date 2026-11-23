@@ -118,10 +118,9 @@ def run_kmeans(X, feature_columns, regions, causes):
     cluster_table_data = []
     for c_idx in range(k): 
         member_indices = [i for i, c in enumerate(assignments) if c == c_idx]
-        if len(member_indices) < 100:  # Focus on small/outlier clusters
-            print(f"\nCluster {c_idx} (Size: {len(member_indices)}):")
-            for idx in member_indices[:5]: # Show first 5 examples
-                print(f"  - Region: {regions[idx]} | Cause: {causes[idx]}")
+        print(f"\nCluster {c_idx} (Size: {len(member_indices)}):")
+        for idx in member_indices[:5]: # Show first 5 examples
+            print(f"  - Region: {regions[idx]} | Cause: {causes[idx]}")
 
         member_count = assignments.count(c_idx)
         centroid_vec = centroids[c_idx]
@@ -134,5 +133,5 @@ def run_kmeans(X, feature_columns, regions, causes):
 
     print(f"\nIteration stages until convergence: {iterations}")
     print("\nCluster Details:")
-    print(tabulate(cluster_table_data, headers=["Cluster Label", "Count of Records", "Top 5 Features (Age/Sex Bracket)"], tablefmt="plain"))
+    print(tabulate(cluster_table_data, headers=["Cluster Label", "Count of Records", "Top 3 Features (Age/Sex Bracket)"], tablefmt="plain"))
     print(f"\nOverall Silhouette score: {silhouette_score:.4f}")
